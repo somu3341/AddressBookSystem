@@ -11,6 +11,7 @@ namespace AddressBookSystem
             AddressBookMain addressBookMain = new AddressBookMain();
             addressBookMain.addcontact();
             addressBookMain.Display(); 
+            addressBookMain.Edit();
         }
     }
 }
