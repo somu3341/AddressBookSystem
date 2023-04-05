@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,8 +17,10 @@ namespace AddressBookSystem
         {
             Console.WriteLine("Enter First Name");
             Contacts.FirstName = Console.ReadLine();
-            int a = Unique(Contacts.FirstName);
-            if (a == 0)
+            //int a = CheckUnique(Contacts.FirstName);
+           // if (a == 0)
+                int b=CheckDuplicate(Contacts.FirstName);
+            if (b == 0)
             {
                 Console.WriteLine("Enetr Last Name");
                 Contacts.LastName = Console.ReadLine();
@@ -34,10 +37,10 @@ namespace AddressBookSystem
                 Console.WriteLine("Enter Email");
                 Contacts.Email = Console.ReadLine();
                 AddressBookSystem.Add(Contacts);
-                list.Add(Contacts.FirstName, AddressBookSystem);
+                list.Add(Contacts.FirstName, AddressBookSystem);    
             }
         }
-        public int Unique(string name)
+        public int CheckUnique(string name)
         {
             int flag = 0;
             if (list.Count !=0)
@@ -57,6 +60,22 @@ namespace AddressBookSystem
             }
             return flag;
         }
+        public int CheckDuplicate(string name)
+        {
+            int sum = 0;
+            if(list.Count !=0)
+            foreach (var data in list)
+            {
+              foreach(var item in data.Value)                 
+                        if (data.Key.Any(x => x.Equals(name)))
+                        {
+                            Console.WriteLine("Duplicate is present");
+                            sum = 1;
+                            break;
+                        }                    
+            }
+            return sum;
+        }      
         public void Display()
         {
             foreach (var data in AddressBookSystem)
