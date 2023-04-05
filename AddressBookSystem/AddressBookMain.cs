@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 namespace AddressBookSystem
 {
     public class AddressBookMain
-    {
-        List<CreateContacts> AddressBookSystem = new List<CreateContacts>();
+    {       
         CreateContacts Contacts = new CreateContacts();
+        List<CreateContacts> AddressBookSystem = new List<CreateContacts>();
         public void addcontact()
         {
             Console.WriteLine("Enter First Name");
@@ -34,7 +34,7 @@ namespace AddressBookSystem
             foreach (var data in AddressBookSystem)
             {
                 Console.WriteLine("First name: " + Contacts.FirstName + "\nLastname: " + Contacts.LastName + "\nAddress: " + Contacts.Address +
-                "\nCity: " + Contacts.City + "\nState: " + Contacts.State + "\nZIP: " + Contacts.ZIP + "\nPhone Number: " + Contacts.PhoneNumber + "\nEmail: " + Contacts.Email);
+                  "\nCity: " + Contacts.City + "\nState: " + Contacts.State + "\nZIP: " + Contacts.ZIP + "\nPhone Number: " + Contacts.PhoneNumber + "\nEmail: " + Contacts.Email);
             }
         }
         public void Edit()

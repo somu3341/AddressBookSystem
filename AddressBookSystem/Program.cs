@@ -16,15 +16,16 @@ namespace AddressBookSystem
                 {
                     case 1:
                         Console.WriteLine("Enter the number of contacts to add");
-                        int N = Convert.ToInt32(Console.ReadLine());
-                        for (int i = 0; i < N; i++)
+                       int N = Convert.ToInt32(Console.ReadLine());
+                       for (int i = 0; i < N; i++)
                         {
-                            addressBookMain.addcontact();
+                            addressBookMain.addcontact();                       
                         }
                         addressBookMain.Display();
-                        break;
+                        break;                        
                     case 2:
                         addressBookMain.Edit();
+                        addressBookMain.Display();
                         break;
                     case 3:
                         addressBookMain.DeleteContact();
