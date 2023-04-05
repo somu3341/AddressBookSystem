@@ -12,7 +12,7 @@ namespace AddressBookSystem
     {       
         CreateContacts Contacts = new CreateContacts();
         List<CreateContacts> AddressBookSystem = new List<CreateContacts>();
-        Dictionary<string, List<CreateContacts>> list = new Dictionary<string, List<CreateContacts>>();
+       Dictionary<string, List<CreateContacts>> list = new Dictionary<string, List<CreateContacts>>();
         public void addcontact()
         {
             Console.WriteLine("Enter First Name");
@@ -75,7 +75,21 @@ namespace AddressBookSystem
                         }                    
             }
             return sum;
-        }      
+        }
+        public void SearchPersonUsingCity(string firstname, string city)
+        {
+            foreach(var data in list)
+            {
+                if(list.Keys.Equals(firstname))
+                {
+                    var citylist = data.Value.Where(x => x.Equals(city));
+                   foreach(var item in citylist)
+                    {
+                        Console.WriteLine("First Name:- "+ item.FirstName + "Last Name:- " + item.LastName +"City Name:-"+item.City +"State:- "+item.State+"ZIP code:- "+item.ZIP+"Phonenumber:- "+item.PhoneNumber+"Email:- "+item.Email);
+                    }
+                }
+            }
+        }
         public void Display()
         {
             foreach (var data in AddressBookSystem)
