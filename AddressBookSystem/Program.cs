@@ -5,12 +5,12 @@ namespace AddressBookSystem
     {
         public static void Main(string[] args) 
         {
-            Console.WriteLine("Welcome to Address Book\r\nProgram in\r\nAddressBookMain class");
+            Console.WriteLine("Welcome to Address Book Program in AddressBookMain class");
             AddressBookMain addressBookMain = new AddressBookMain();
             bool flag = true;
             while (flag)
             {
-                Console.WriteLine("Select Option \n1. Add Contact\n 2. Edit Contact\n 3. Delete Contact \n4.Search by City\n 5.Exit");
+                Console.WriteLine("Select Option\n1.Add Contact\n 2.Edit Contact\n 3.Delete Contact \n4.Search by City\n 5.Exit");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
@@ -19,7 +19,7 @@ namespace AddressBookSystem
                        int N = Convert.ToInt32(Console.ReadLine());
                        for (int i = 0; i < N; i++)
                         {
-                            addressBookMain.addcontact();                       
+                            addressBookMain.addcontact();                           
                         }
                         addressBookMain.Display();
                         break;                        

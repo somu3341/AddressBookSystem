@@ -9,17 +9,17 @@ using System.Threading.Tasks;
 namespace AddressBookSystem
 {
     public class AddressBookMain
-    {       
+    {              
+        List<CreateContacts> AddressBook = new List<CreateContacts>();
         CreateContacts Contacts = new CreateContacts();
-        List<CreateContacts> AddressBookSystem = new List<CreateContacts>();
-       Dictionary<string, List<CreateContacts>> list = new Dictionary<string, List<CreateContacts>>();
+        Dictionary<string, List<CreateContacts>> list = new Dictionary<string, List<CreateContacts>>();
         public void addcontact()
         {
             Console.WriteLine("Enter First Name");
             Contacts.FirstName = Console.ReadLine();
             //int a = CheckUnique(Contacts.FirstName);
-           // if (a == 0)
-                int b=CheckDuplicate(Contacts.FirstName);
+            //if (a == 0)
+                int b = CheckDuplicate(Contacts.FirstName);
             if (b == 0)
             {
                 Console.WriteLine("Enetr Last Name");
@@ -36,8 +36,8 @@ namespace AddressBookSystem
                 Contacts.PhoneNumber = Console.ReadLine();
                 Console.WriteLine("Enter Email");
                 Contacts.Email = Console.ReadLine();
-                AddressBookSystem.Add(Contacts);
-                list.Add(Contacts.FirstName, AddressBookSystem);    
+                AddressBook.Add(Contacts);
+                list.Add(Contacts.FirstName, AddressBook);    
             }
         }
         public int CheckUnique(string name)
@@ -52,7 +52,7 @@ namespace AddressBookSystem
                         if (data.Key == name)
                         {
                             Console.WriteLine("The Name You have given is Already Present");    
-                            flag = 1;
+                            flag++;
                             break;
                         }
                     }
@@ -88,12 +88,16 @@ namespace AddressBookSystem
                         Console.WriteLine("First Name:- "+ item.FirstName + "Last Name:- " + item.LastName +"City Name:-"+item.City +"State:- "+item.State+"ZIP code:- "+item.ZIP+"Phonenumber:- "+item.PhoneNumber+"Email:- "+item.Email);
                     }
                 }
+                else
+                {
+                    Console.WriteLine("The first doesnot exits hear");
+                }
             }
         }
         public void Display()
         {
-            foreach (var data in AddressBookSystem)
-            {           
+           foreach (var data in AddressBook)
+            {      
                 Console.WriteLine("First name: " + Contacts.FirstName + "\nLastname: " + Contacts.LastName + "\nAddress: " + Contacts.Address +
                   "\nCity: " + Contacts.City + "\nState: " + Contacts.State + "\nZIP: " + Contacts.ZIP + "\nPhone Number: " + Contacts.PhoneNumber + "\nEmail: " + Contacts.Email);
             }
@@ -102,7 +106,7 @@ namespace AddressBookSystem
         {
             Console.WriteLine("Edit Using First Name");
             string name = Console.ReadLine();
-            foreach (var data in AddressBookSystem)
+            foreach (var data in AddressBook)
             {
                 if (data.FirstName == name)
                 {
@@ -158,14 +162,14 @@ namespace AddressBookSystem
         {
             Console.WriteLine("Enter name to delete contact");
             string name = Console.ReadLine();
-            foreach (var data in AddressBookSystem)
+            foreach (var data in AddressBook)
             {
                 if (data.FirstName.Equals(name))
                 {
                     Contacts = data;
                 }
             }
-            AddressBookSystem.Remove(Contacts);
+            AddressBook.Remove(Contacts);
         }
     }
 }
