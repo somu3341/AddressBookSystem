@@ -37,13 +37,11 @@ namespace AddressBookSystem
                         Console.WriteLine("Enter City Name");
                         string city=Console.ReadLine();
                         addressBookMain.SearchPersonUsingCity(first, city);
-                        addressBookMain.Display();
                         break;
                     case 5:
                         Console.WriteLine("Enter State Name");
                         string state=Console.ReadLine();
                         addressBookMain.ViewUsingCityOrState(state);
-                        addressBookMain.Display();
                         break;
                     case 6:
                         flag = false;

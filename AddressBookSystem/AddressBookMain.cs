@@ -176,9 +176,11 @@ namespace AddressBookSystem
                     var statelist = data.Value.Where(x => x.State.Equals(state));
                     foreach (var item in statelist)
                     {
-                        Console.WriteLine("First Name:- " + item.FirstName + "Last Name:- " + item.LastName + "City Name:-" + item.City + "State:- " + item.State + "ZIP code:- " + item.ZIP + "Phonenumber:- " + item.PhoneNumber + "Email:- " + item.Email);
+                        Console.WriteLine("First Name:- " + item.FirstName + "Last Name:- " + item.LastName + "City Name:-" + item.City + "State:- " + item.State);
                     }
                 }
+                else
+                    Console.WriteLine("Not Found");
             }
         }
     }
