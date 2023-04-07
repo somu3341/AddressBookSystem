@@ -37,7 +37,6 @@ namespace AddressBookSystem
                         Console.WriteLine("Enter City name");
                         string city=Console.ReadLine();
                         addressBookMain.SearchPersonUsingCity(first,city);
-                        addressBookMain.Display();
                         break;
                     case 5:
                         flag = false;
