@@ -80,20 +80,16 @@ namespace AddressBookSystem
         {
             foreach(var data in list)
             {
-                if(list.Keys.Equals(firstname))
+                if(list.Keys.Equals(city))
                 {
-                    var citylist = data.Value.Where(x => x.Equals(city));
+                    var citylist = data.Value.Where(x => x.City.Equals(city));
                    foreach(var item in citylist)
                     {
                         Console.WriteLine("First Name:- "+ item.FirstName + "Last Name:- " + item.LastName +"City Name:-"+item.City +"State:- "+item.State+"ZIP code:- "+item.ZIP+"Phonenumber:- "+item.PhoneNumber+"Email:- "+item.Email);
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("The first doesnot exits hear");
+                    }                 
                 }
             }
-        }
+        }     
         public void Display()
         {
            foreach (var data in AddressBook)
@@ -170,6 +166,20 @@ namespace AddressBookSystem
                 }
             }
             AddressBook.Remove(Contacts);
+        }
+        public void ViewUsingCityOrState(string state)
+        {
+            foreach (var data in list)
+            {
+                if (list.Keys.Equals(state))
+                {
+                    var statelist = data.Value.Where(x => x.State.Equals(state));
+                    foreach (var item in statelist)
+                    {
+                        Console.WriteLine("First Name:- " + item.FirstName + "Last Name:- " + item.LastName + "City Name:-" + item.City + "State:- " + item.State + "ZIP code:- " + item.ZIP + "Phonenumber:- " + item.PhoneNumber + "Email:- " + item.Email);
+                    }
+                }
+            }
         }
     }
 }
