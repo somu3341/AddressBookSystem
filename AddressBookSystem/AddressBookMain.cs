@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
+using System.Globalization;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -181,6 +182,22 @@ namespace AddressBookSystem
                     foreach (var item in statelist)
                     {
                         Console.WriteLine("First Name:- " + item.FirstName + "Last Name:- " + item.LastName + "City Name:-" + item.City + "State:- " + item.State);
+                    }
+                }
+                else
+                    Console.WriteLine("Not Found");
+            }
+        }
+        public void GetNumberOfPerson(string city)
+        {
+            foreach (var data in list)
+            {
+                if (list.Keys.Equals(city))
+                {
+                    var num = data.Value.Where(x => x.City.Equals(city));
+                    foreach (var item in num)
+                    {
+                        Console.WriteLine("Phone Number of persons:- " + item.PhoneNumber);
                     }
                 }
                 else
