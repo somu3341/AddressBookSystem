@@ -80,16 +80,20 @@ namespace AddressBookSystem
         {
             foreach(var data in list)
             {
-                if(list.Keys.Equals(city))
+                if(list.Keys.Equals(firstname))
                 {
-                    var citylist = data.Value.Where(x => x.City.Equals(city));
+                    var citylist = data.Value.Where(x => x.Equals(city));
                    foreach(var item in citylist)
                     {
                         Console.WriteLine("First Name:- "+ item.FirstName + "Last Name:- " + item.LastName +"City Name:-"+item.City +"State:- "+item.State+"ZIP code:- "+item.ZIP+"Phonenumber:- "+item.PhoneNumber+"Email:- "+item.Email);
-                    }                 
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("The first name doesnot exits hear");
                 }
             }
-        }     
+        }
         public void Display()
         {
            foreach (var data in AddressBook)
