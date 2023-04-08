@@ -10,7 +10,7 @@ namespace AddressBookSystem
             bool flag = true;
             while (flag)
             {
-                Console.WriteLine("Select Option\n1.Add Contact\n 2.Edit Contact\n 3.Delete Contact \n4.Search by City\n 5.Exit");
+                Console.WriteLine("Select Option\n1.Add Contact\n2.Edit Contact\n3.Delete Contact\n4.Search by City\n5.Exit");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {

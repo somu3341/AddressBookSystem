@@ -12,16 +12,16 @@ namespace AddressBookSystem
     {              
         List<CreateContacts> AddressBook = new List<CreateContacts>();
         CreateContacts Contacts = new CreateContacts();
-        Dictionary<string, List<CreateContacts>> list = new Dictionary<string, List<CreateContacts>>();
+        Dictionary<string, List<CreateContacts>> dict = new Dictionary<string, List<CreateContacts>>();
         public void addcontact()
         {
             Console.WriteLine("Enter First Name");
             Contacts.FirstName = Console.ReadLine();
             //int a = CheckUnique(Contacts.FirstName);
             //if (a == 0)
-                int b = CheckDuplicate(Contacts.FirstName);
-            if (b == 0)
-            {
+               // int b = CheckDuplicate(Contacts.FirstName);
+           // if (b == 0)
+            //{
                 Console.WriteLine("Enetr Last Name");
                 Contacts.LastName = Console.ReadLine();
                 Console.WriteLine("Enter Address");
@@ -37,15 +37,15 @@ namespace AddressBookSystem
                 Console.WriteLine("Enter Email");
                 Contacts.Email = Console.ReadLine();
                 AddressBook.Add(Contacts);
-                list.Add(Contacts.FirstName, AddressBook);    
-            }
+                dict.Add(Contacts.FirstName, AddressBook);    
+           // }
         }
         public int CheckUnique(string name)
         {
             int flag = 0;
-            if (list.Count !=0)
+            if (dict.Count !=0)
             {
-                foreach (var data in list)
+                foreach (var data in dict)
                 {
                     foreach (var item in data.Value)
                     {
@@ -60,11 +60,25 @@ namespace AddressBookSystem
             }
             return flag;
         }
+        public void SearchPersonUsingCity(string firstname, string city)
+        {
+            foreach (var data in dict)
+            {
+                if (dict.Keys.Equals(firstname))
+                {
+                    var cityList = data.Value.Where(x => x.City.Equals(city)).ToList();
+                    foreach (var item in cityList)
+                    {
+                        Console.WriteLine("First Name:- " + item.FirstName + "Last Name:- " + item.LastName + "City Name:-" + item.City + "State:- " + item.State + "ZIP code:- " + item.ZIP + "Phonenumber:- " + item.PhoneNumber + "Email:- " + item.Email);
+                    }
+                }
+            }
+        }
         public int CheckDuplicate(string name)
         {
             int sum = 0;
-            if(list.Count !=0)
-            foreach (var data in list)
+            if(dict.Count !=0)
+            foreach (var data in dict)
             {
               foreach(var item in data.Value)                 
                         if (data.Key.Any(x => x.Equals(name)))
@@ -75,24 +89,6 @@ namespace AddressBookSystem
                         }                    
             }
             return sum;
-        }
-        public void SearchPersonUsingCity(string firstname, string city)
-        {
-            foreach(var data in list)
-            {
-                if(list.Keys.Equals(firstname))
-                {
-                    var citylist = data.Value.Where(x => x.Equals(city));
-                   foreach(var item in citylist)
-                    {
-                        Console.WriteLine("First Name:- "+ item.FirstName + "Last Name:- " + item.LastName +"City Name:-"+item.City +"State:- "+item.State+"ZIP code:- "+item.ZIP+"Phonenumber:- "+item.PhoneNumber+"Email:- "+item.Email);
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("The first doesnot exits hear");
-                }
-            }
         }
         public void Display()
         {
