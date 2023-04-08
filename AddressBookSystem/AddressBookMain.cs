@@ -11,8 +11,8 @@ namespace AddressBookSystem
     public class AddressBookMain
     {       
         CreateContacts Contacts = new CreateContacts();
-        List<CreateContacts> AddressBookSystem = new List<CreateContacts>();
-        Dictionary<string, List<CreateContacts>> list = new Dictionary<string, List<CreateContacts>>();
+        List<CreateContacts> AddressBook = new List<CreateContacts>();
+        Dictionary<string, List<CreateContacts>> dict = new Dictionary<string, List<CreateContacts>>();
         public void addcontact()
         {
             Console.WriteLine("Enter First Name");
@@ -36,16 +36,16 @@ namespace AddressBookSystem
                 Contacts.PhoneNumber = Console.ReadLine();
                 Console.WriteLine("Enter Email");
                 Contacts.Email = Console.ReadLine();
-                AddressBookSystem.Add(Contacts);
-                list.Add(Contacts.FirstName, AddressBookSystem);    
+                AddressBook.Add(Contacts);
+                dict.Add(Contacts.FirstName, AddressBook);    
             }
         }
         public int CheckUnique(string name)
         {
             int flag = 0;
-            if (list.Count !=0)
+            if (dict.Count !=0)
             {
-                foreach (var data in list)
+                foreach (var data in dict)
                 {
                     foreach (var item in data.Value)
                     {
@@ -63,22 +63,28 @@ namespace AddressBookSystem
         public int CheckDuplicate(string name)
         {
             int sum = 0;
-            if(list.Count !=0)
-            foreach (var data in list)
+            if(dict.Count != 0)
             {
-              foreach(var item in data.Value)                 
+                foreach (var data in dict)
+                {
+                    foreach (var item in data.Value)
+                    {
+                        Console.WriteLine(data.Key.Any(x => x.Equals(name)));
                         if (data.Key.Any(x => x.Equals(name)))
                         {
                             Console.WriteLine("Duplicate is present");
                             sum = 1;
                             break;
-                        }                    
+                        }
+                    }
+                }
+                                            
             }
             return sum;
         }      
         public void Display()
         {
-            foreach (var data in AddressBookSystem)
+            foreach (var data in AddressBook)
             {           
                 Console.WriteLine("First name: " + Contacts.FirstName + "\nLastname: " + Contacts.LastName + "\nAddress: " + Contacts.Address +
                   "\nCity: " + Contacts.City + "\nState: " + Contacts.State + "\nZIP: " + Contacts.ZIP + "\nPhone Number: " + Contacts.PhoneNumber + "\nEmail: " + Contacts.Email);
@@ -88,7 +94,7 @@ namespace AddressBookSystem
         {
             Console.WriteLine("Edit Using First Name");
             string name = Console.ReadLine();
-            foreach (var data in AddressBookSystem)
+            foreach (var data in AddressBook)
             {
                 if (data.FirstName == name)
                 {
@@ -144,14 +150,14 @@ namespace AddressBookSystem
         {
             Console.WriteLine("Enter name to delete contact");
             string name = Console.ReadLine();
-            foreach (var data in AddressBookSystem)
+            foreach (var data in AddressBook)
             {
                 if (data.FirstName.Equals(name))
                 {
                     Contacts = data;
                 }
             }
-            AddressBookSystem.Remove(Contacts);
+            AddressBook.Remove(Contacts);
         }
     }
 }
