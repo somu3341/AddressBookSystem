@@ -10,7 +10,7 @@ namespace AddressBookSystem
             bool flag = true;
             while (flag)
             {
-                Console.WriteLine("Select Option\n1.Add Contact\n 2.Edit Contact\n 3.Delete Contact \n4.Search by City \n5.View Persons Using State \n6.Get Phone Number Using City \n7.Exit");
+                Console.WriteLine("Select Option\n1.Add Contact\n 2.Edit Contact\n 3.Delete Contact \n4.Search by City \n5.View Persons Using State \n6.Get Phone Number Using City and State \n7.Exit");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
@@ -39,14 +39,19 @@ namespace AddressBookSystem
                         addressBookMain.SearchPersonUsingCity(first, city);
                         break;
                     case 5:
+                        Console.WriteLine("Enter City Name");
+                        string ciity = Console.ReadLine();
                         Console.WriteLine("Enter State Name");
-                        string state=Console.ReadLine();
-                        addressBookMain.ViewUsingCityOrState(state);
+                        string state = Console.ReadLine();
+                        addressBookMain.SearchingByCityAndState(ciity, state);
                         break;
                         case 6:
                         Console.WriteLine("Enter City Name");
-                        string number=Console.ReadLine();
-                        addressBookMain.GetNumberOfPerson(number);
+                        string cty= Console.ReadLine();
+                        addressBookMain.ByCity(cty);
+                        Console.WriteLine("Enter State Name");
+                        string stat = Console.ReadLine();
+                        addressBookMain.ByCity(stat);
                         break;
                     case 7:
                         flag = false;
