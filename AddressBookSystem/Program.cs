@@ -10,7 +10,7 @@ namespace AddressBookSystem
             bool flag = true;
             while (flag)
             {
-                Console.WriteLine("Select Option\n1.Add Contact\n 2.Edit Contact\n 3.Delete Contact \n4.Search by City \n5.View Persons Using State \n6.Get Phone Number Using City and State \n7.Sort \n8.Sorting Using City, state and Zip\n9.Exit");
+                Console.WriteLine("Select Option\n1.Add Contact\n 2.Edit Contact\n 3.Delete Contact \n4.Search by City \n5.View Persons Using State \n6.Get Phone Number Using City and State \n7.Sort \n8.Sorting Using City, state and Zip\n9.Read Address Book\n10.Exit");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
@@ -79,7 +79,10 @@ namespace AddressBookSystem
                             }
                         }
                         break;
-                    case 9:
+                        case 9:
+                        addressBookMain.ReadFile(@"D:\BridgeLabs\AddressBookSystem\AddressBookSystem\TextFile.txt");
+                        break;
+                    case 10:
                         flag = false;
                         break;
                 }

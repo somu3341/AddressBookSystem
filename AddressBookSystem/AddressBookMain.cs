@@ -42,7 +42,7 @@ namespace AddressBookSystem
                 Console.WriteLine("Enter Email");
                 Contacts.Email = Console.ReadLine();
                 AddressBook.Add(Contacts);
-                dict.Add(Contacts.FirstName, AddressBook);  
+                dict.Add(Contacts.FirstName, AddressBook);
             }
         }
         public void ByCity(string city)
@@ -249,6 +249,30 @@ namespace AddressBookSystem
         {
             zip = zip.OrderBy(x => x.Key).ToDictionary(x => x.Key, x => x.Value);
             DisplayData(zip);
+        }
+        public void WriteToFile(string filePath)
+        {
+            using (StreamWriter sr = new StreamWriter(filePath))
+            {
+                foreach (var data in dict)
+                {
+                    sr.WriteLine("Key------------>" + data.Key);
+                    foreach (var item in data.Value)
+                    {
+                        sr.WriteLine("First Name :" + item.FirstName + "\n" + "Last Name :" + item.LastName + "\n" + "Address :" + item.Address + "\n" + "City :" + item.City + "\n" + "State :" + item.State + "\n" + "Zip Code :" + item.ZIP + "\n" + "Phone Number :" + item.PhoneNumber + "\n" + "Mail Id :" + item.Email);
+                    }
+                }
+            }
+        }
+        public void ReadFile(string filePath)
+        {
+            using (StreamReader sr = new StreamReader(filePath))
+            {
+                while (sr.ReadLine() != null)
+                {
+                    Console.WriteLine(sr.ReadLine());
+                }
+            }
         }
     }
 }
