@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Reflection.Metadata;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -16,6 +17,7 @@ namespace AddressBookSystem
         Dictionary<string, List<CreateContacts>> dict = new Dictionary<string, List<CreateContacts>>();
         Dictionary<string,List<CreateContacts>> city = new Dictionary<string, List<CreateContacts>>();
         Dictionary<string,List<CreateContacts>> state=new Dictionary<string, List<CreateContacts>>();
+        Dictionary<string,List<CreateContacts>> zip=new Dictionary<string, List<CreateContacts>>();
         public void addcontact()
         {
             Console.WriteLine("Enter First Name");
@@ -232,6 +234,21 @@ namespace AddressBookSystem
         {
             dict = dict.OrderBy(x => x.Key).ToDictionary(x => x.Key, x => x.Value);
             DisplayData(dict);
+        }
+        public void SortCity()
+        {
+            city = city.OrderBy(x => x.Key).ToDictionary(x => x.Key, x => x.Value);
+            DisplayData(city);
+        }
+        public void SortState()
+        {
+            state = state.OrderBy(x => x.Key).ToDictionary(x => x.Key, x => x.Value);
+            DisplayData(state);
+        }
+        public void SortZip()
+        {
+            zip = zip.OrderBy(x => x.Key).ToDictionary(x => x.Key, x => x.Value);
+            DisplayData(zip);
         }
     }
 }

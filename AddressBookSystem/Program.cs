@@ -10,7 +10,7 @@ namespace AddressBookSystem
             bool flag = true;
             while (flag)
             {
-                Console.WriteLine("Select Option\n1.Add Contact\n 2.Edit Contact\n 3.Delete Contact \n4.Search by City \n5.View Persons Using State \n6.Get Phone Number Using City and State \n7.Sort \n8.Exit");
+                Console.WriteLine("Select Option\n1.Add Contact\n 2.Edit Contact\n 3.Delete Contact \n4.Search by City \n5.View Persons Using State \n6.Get Phone Number Using City and State \n7.Sort \n8.Sorting Using City, state and Zip\n9.Exit");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
@@ -56,7 +56,30 @@ namespace AddressBookSystem
                     case 7:
                         addressBookMain.Sorting();
                         break;
-                    case 8:
+                        case 8:
+                        bool f3 = true;                      
+                        while (f3)
+                        {
+                            Console.WriteLine("Select an Option \n 1.Sort By City \n 2..Sort by State \n 3.Sort by ZipCode \n 4.Exit");
+                            int opt = Convert.ToInt32(Console.ReadLine());
+                            switch (opt)
+                            {
+                                case 1:
+                                    addressBookMain.SortCity();
+                                    break;
+                                case 2:
+                                    addressBookMain.SortState();
+                                    break;
+                                case 3:
+                                    addressBookMain.SortZip();
+                                    break;
+                                case 4:
+                                    f3 = false;
+                                    break;
+                            }
+                        }
+                        break;
+                    case 9:
                         flag = false;
                         break;
                 }
