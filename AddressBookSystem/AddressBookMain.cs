@@ -217,5 +217,21 @@ namespace AddressBookSystem
             }
             AddressBook.Remove(Contacts);
         }
+        public void DisplayData(Dictionary<string, List<CreateContacts>> dict)
+        {
+            foreach (var data in dict)
+            {
+                Console.WriteLine("Key------------>" + data.Key);
+                foreach (var item in data.Value)
+                {
+                    Console.WriteLine("First Name :" + item.FirstName + "\n" + "Last Name :" + item.LastName + "\n" + "Address :" + item.Address + "\n" + "City :" + item.City + "\n" + "State :" + item.State + "\n" + "Zip Code :" + item.ZIP + "\n" + "Phone Number :" + item.PhoneNumber + "\n" + "Mail Id :" + item.Email);
+                }
+            }
+        }
+        public void Sorting()
+        {
+            dict = dict.OrderBy(x => x.Key).ToDictionary(x => x.Key, x => x.Value);
+            DisplayData(dict);
+        }
     }
 }
