@@ -219,7 +219,7 @@ namespace AddressBookSystem
             }
             AddressBook.Remove(Contacts);
         }
-        public void DisplayData(Dictionary<string, List<CreateContacts>> dict)
+        public void DisplayData()
         {
             foreach (var data in dict)
             {
@@ -233,22 +233,22 @@ namespace AddressBookSystem
         public void Sorting()
         {
             dict = dict.OrderBy(x => x.Key).ToDictionary(x => x.Key, x => x.Value);
-            DisplayData(dict);
+            DisplayData();
         }
         public void SortCity()
         {
             city = city.OrderBy(x => x.Key).ToDictionary(x => x.Key, x => x.Value);
-            DisplayData(city);
+            DisplayData();
         }
         public void SortState()
         {
             state = state.OrderBy(x => x.Key).ToDictionary(x => x.Key, x => x.Value);
-            DisplayData(state);
+            DisplayData();
         }
         public void SortZip()
         {
             zip = zip.OrderBy(x => x.Key).ToDictionary(x => x.Key, x => x.Value);
-            DisplayData(zip);
+            DisplayData();
         }
         public void WriteToFile(string filePath)
         {
@@ -270,7 +270,7 @@ namespace AddressBookSystem
             {
                 while (sr.ReadLine() != null)
                 {
-                    Console.WriteLine(sr.ReadLine());
+                  // Console.WriteLine(sr.ReadLine());
                 }
             }
         }

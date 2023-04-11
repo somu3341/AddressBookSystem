@@ -79,8 +79,9 @@ namespace AddressBookSystem
                             }
                         }
                         break;
-                        case 9:
-                        addressBookMain.ReadFile(@"D:\BridgeLabs\AddressBookSystem\AddressBookSystem\TextFile.txt");
+                        case 9:                      
+                        addressBookMain.ReadFile(@"D:\BridgeLabs\AddressBookSystem\AddressBookSystem\AddressBookMain.cs");
+                        addressBookMain.WriteToFile(@"D:\BridgeLabs\AddressBookSystem\AddressBookSystem\TextFile.txt");
                         break;
                     case 10:
                         flag = false;
