@@ -217,7 +217,7 @@ namespace AddressBookSystem
             }
             AddressBook.Remove(Contacts);
         }
-        public void DisplayData(Dictionary<string, List<CreateContacts>> dict)
+        public void DisplayData()
         {
             foreach (var data in dict)
             {
@@ -231,7 +231,7 @@ namespace AddressBookSystem
         public void Sorting()
         {
             dict = dict.OrderBy(x => x.Key).ToDictionary(x => x.Key, x => x.Value);
-            DisplayData(dict);
+            DisplayData();
         }
     }
 }
