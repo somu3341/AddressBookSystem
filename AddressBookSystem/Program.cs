@@ -10,7 +10,7 @@ namespace AddressBookSystem
             bool flag = true;
             while (flag)
             {
-                Console.WriteLine("Select Option\n1.Add Contact\n 2.Edit Contact\n 3.Delete Contact \n4.Search by City \n5.View Persons Using State \n6.Get Phone Number Using City and State \n7.Sort \n8.Sorting Using City, state and Zip\n9.Read Address Book\n10.Read/Write AddressBook Contact as CSV File\n11.Exit");
+                Console.WriteLine("Select Option\n1.Add Contact\n 2.Edit Contact\n 3.Delete Contact \n4.Search by City \n5.View Persons Using State \n6.Get Phone Number Using City and State \n7.Sort \n8.Sorting Using City, state and Zip\n9.Read Address Book\n10.Read/Write AddressBook Contact as CSV File\n11.Read/write AddressBook Contact as Json File\n12.Exit");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
@@ -86,7 +86,10 @@ namespace AddressBookSystem
                         case 10:
                         AddressBookMain.ReadAndWriteAsCSVFile();
                         break;
-                    case 11:
+                        case 11:
+                            AddressBookMain.ReadAndWriteAsJsonFile();
+                        break;
+                    case 12:
                         flag = false;
                         break;
                 }

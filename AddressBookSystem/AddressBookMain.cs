@@ -1,4 +1,5 @@
 ﻿using CsvHelper;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
@@ -9,6 +10,7 @@ using System.Reflection.Emit;
 using System.Reflection.Metadata;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace AddressBookSystem
@@ -297,6 +299,24 @@ namespace AddressBookSystem
             {
                 csvWriter.WriteRecords(records);
             }
+        }     
+        public static void ReadAndWriteAsJsonFile()
+        {
+            List<CreateContacts>records= new List<CreateContacts>();
+            string importFilePath = @"D:\BridgeLabs\AddressBookSystem\AddressBookSystem\csvFile.csv";
+            string exportFilePath = @"D:\BridgeLabs\AddressBookSystem\AddressBookSystem\csvFile2.json";
+            using (var reader = new StreamReader(importFilePath))
+                using(var csv = new CsvReader(reader,CultureInfo.InvariantCulture))
+            {
+                records = csv.GetRecords<CreateContacts>().ToList();
+                Console.WriteLine("Reading Json File");
+                foreach(var data in records)
+                {
+                    Console.WriteLine(data.FirstName + "\n" + data.LastName + "\n" + data.Address + "\n" + data.City + "\n" + data.State + "\n" + data.ZIP + "\n" + data.PhoneNumber + "\n" + data.Email);
+                }
+            }
+            var item = JsonConvert.SerializeObject(records);
+            File.WriteAllText(exportFilePath, item);
         }
     }
 }
