@@ -1,9 +1,9 @@
 Key------------>soma
 First Name :soma
 Last Name :shekar
-Address :kgf
-City :kolar
-State :KA
-Zip Code :543222
-Phone Number :8794774632
-Mail Id :sokjjjhh@gmail.com
+Address :KGF
+City :Kolar
+State :Karnataka
+Zip Code :564321
+Phone Number :9807654321
+Mail Id :somsdhdhghdhh@gmail.com

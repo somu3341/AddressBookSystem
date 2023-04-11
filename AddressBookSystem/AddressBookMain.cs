@@ -1,7 +1,10 @@
-﻿using System;
+﻿using CsvHelper;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
+using System.Globalization;
 using System.Linq;
+using System.Reflection;
 using System.Reflection.Emit;
 using System.Reflection.Metadata;
 using System.Security.Cryptography.X509Certificates;
@@ -11,13 +14,13 @@ using System.Threading.Tasks;
 namespace AddressBookSystem
 {
     public class AddressBookMain
-    {              
+    {             
         List<CreateContacts> AddressBook = new List<CreateContacts>();
         CreateContacts Contacts = new CreateContacts();
         Dictionary<string, List<CreateContacts>> dict = new Dictionary<string, List<CreateContacts>>();
         Dictionary<string,List<CreateContacts>> city = new Dictionary<string, List<CreateContacts>>();
         Dictionary<string,List<CreateContacts>> state=new Dictionary<string, List<CreateContacts>>();
-        Dictionary<string,List<CreateContacts>> zip=new Dictionary<string, List<CreateContacts>>();
+        Dictionary<string,List<CreateContacts>> zip=new Dictionary<string, List<CreateContacts>>();   
         public void addcontact()
         {
             Console.WriteLine("Enter First Name");
@@ -270,8 +273,29 @@ namespace AddressBookSystem
             {
                 while (sr.ReadLine() != null)
                 {
-                  // Console.WriteLine(sr.ReadLine());
+                  Console.WriteLine(sr.ReadLine());
                 }
+            }
+        }
+        public static void ReadAndWriteAsCSVFile()
+        {
+            List<CreateContacts> records= new List<CreateContacts>();
+            string importFilePath = @"D:\BridgeLabs\AddressBookSystem\AddressBookSystem\csvFile.csv";
+            string exportFilePath = @"D:\BridgeLabs\AddressBookSystem\AddressBookSystem\csvFile1.csv";
+            using (var reader = new StreamReader(importFilePath))
+            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+            {
+                records = csv.GetRecords<CreateContacts>().ToList();
+                Console.WriteLine("Reading CSV File");
+                foreach(var data in records)
+                {
+                    Console.WriteLine(data.FirstName + "\n" +data.LastName + "\n" +data.Address + "\n"+ data.City + "\n" + data.State + "\n" + data.ZIP + "\n"+ data.PhoneNumber + "\n"+ data.Email);
+                }
+            }
+            using (var writer = new StreamWriter(exportFilePath))
+            using (var csvWriter = new CsvWriter(writer, CultureInfo.InvariantCulture))
+            {
+                csvWriter.WriteRecords(records);
             }
         }
     }
